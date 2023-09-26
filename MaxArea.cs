@@ -1,6 +1,6 @@
 // https://leetcode.com/problems/container-with-most-water/?envType=study-plan-v2&envId=leetcode-75
 
-int MaxArea(int[] heights)
+        int MaxArea(int[] heights)
         {
             int left = 0;
             int right = heights.Length - 1;
