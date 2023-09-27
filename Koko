@@ -1,0 +1,41 @@
+// https://leetcode.com/problems/koko-eating-bananas/?envType=study-plan-v2&envId=leetcode-75
+
+    class KoKo
+    {
+        public int MinEatingSpeed(int[] piles, int h)
+        {
+            int low = 1;
+            int high = Int32.MaxValue;
+            while (low <= high)
+            {
+                int mid = low + (high - low) / 2;
+                if(CanFinishEating(piles, mid, h))
+                {
+                    high = mid - 1;
+                }
+                else
+                {
+                    low = mid + 1;
+                }
+            }
+            return low;
+        }
+
+        private bool CanFinishEating(int[] piles, int k, int h)
+        {
+            int hours = 0;
+            foreach(int pile in piles)
+            {
+                int hoursToCompletePile = pile / k;
+                hours += hoursToCompletePile;
+                if(pile % k != 0)
+                {
+                    hours++;
+                }
+            }
+            return hours <= h;
+        }
+
+        // Time Complexity : O(n log(m)) where n is the number of piles and m is the range of k
+        // Space Complexity : O(1)
+    }
